@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: all42
   roles:
   - common
   - role: jnv.unattended-upgrades
@@ -11,5 +11,5 @@
 - hosts: servers
   roles:
   - nginx-dehydrated
-  - mqtt
-  - fieldtracks
+  #- mqtt
+  #- fieldtracks
