@@ -1,0 +1,15 @@
+- hosts: all
+  roles:
+  - common
+  - role: jnv.unattended-upgrades
+    unattended_origins_patterns:
+    - 'origin=Debian,codename=${distro_codename},label=Debian-Security' # security updates
+    - 'o=Debian,codename=${distro_codename},label=Debian' # updates including non-security updates
+    - 'o=Debian,codename=${distro_codename},a=proposed-updates'
+    unattended_mail: 'jan@jluehr.de'
+
+- hosts: servers
+  roles:
+  - nginx-dehydrated
+  - mqtt
+  - fieldtracks

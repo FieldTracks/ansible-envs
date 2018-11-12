@@ -1,0 +1,3 @@
+[user]
+  name = root
+  email = root@{{ ansible_fqdn }}

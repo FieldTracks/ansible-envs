@@ -1,0 +1,95 @@
+---
+- name: install common packages
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+  - aptitude
+  - syslog-ng
+  - dbus
+  - sudo
+  - etckeeper
+  - git
+  - htop
+  - vim
+  - tmux
+  - mosh
+  - needrestart
+  - rsync
+  - apt-transport-https
+
+- hostname: name={{ inventory_hostname }}
+
+- name: /etc/hosts make hostname resolvable
+  lineinfile:
+    dest: /etc/hosts
+    regexp: "^127.0.1.1"
+    line: "127.0.1.1       {{ inventory_hostname }} {{ inventory_hostname_short }}"
+    state: present
+
+- name: place default git config for root
+  template:
+    src: gitconfig
+    dest: /root/.gitconfig
+    owner: root
+    group: root
+    mode: 0440
+
+- name: set vim as default editor
+  file: >
+    src=/usr/bin/vim.basic
+    dest=/etc/alternatives/editor
+    owner=root
+    group=root
+    state=link
+
+- name: Disable visual mode in vim
+  lineinfile: >
+    dest=/root/.vimrc
+    line='set mouse-=a'
+    create=yes
+    state=present
+
+- name: set Update-Package-Lists 1
+  lineinfile: >
+    dest=/etc/apt/apt.conf.d/10AnsibleAptUpdate
+    regexp='APT::Periodic::Update-Package-Lists'
+    line='APT::Periodic::Update-Package-Lists "1";'
+    create=yes
+    state=present
+
+- name: set Download-Upgradeable-Packages 1
+  lineinfile: >
+    dest=/etc/apt/apt.conf.d/10AnsibleAptUpdate
+    regexp='APT::Periodic::Download-Upgradeable-Packages'
+    line='APT::Periodic::Download-Upgradeable-Packages "1";'
+    create=yes
+    state=present
+
+# enable login and sudo for registered users
+#- name: add wheel group
+#  group: name=wheel state=present
+
+#- name: add users
+#  user: name={{ item.key }} groups=wheel shell=/bin/bash state=present
+#  with_dict: "{{ users | default({}) }}"
+
+#- name: add sshkeys for users
+#  authorized_key:
+#    user: "{{ item.key }}"
+#    key: "{{ item.value.authorized_key }}"
+#    state: present
+#  with_dict: "{{ users | default({}) }}"
+
+#- name: remove unwanted users
+# user: name={{ item.key }} state=absent remove=yes
+#  with_dict: "{{ users_absent | default({}) }}"
+
+#- name: add wheel group to sudoers
+#  lineinfile: "dest=/etc/sudoers state=present regexp='^%wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL'"
+
+- name: set etckeeper exit trap
+  copy: >
+    src=bash.bashrc
+    dest=/etc/bash.bashrc
+    mode='0644'
+    owner=root
+    group=root

@@ -1,0 +1,33 @@
+#
+# Ansible managed configuration - do not edit
+#
+server {
+ # SSL configuration
+ #
+ listen [::]:443 ssl;
+ ssl_prefer_server_ciphers on;
+
+ gzip off;
+ ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # not possible to do exclusive
+ ssl_ciphers 'EDH+CAMELLIA:EDH+aRSA:EECDH+aRSA+AESGCM:EECDH+aRSA+SHA256:EECDH:+CAMELLIA128:+AES128:+SSLv3:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!DSS:!RC4:!SEED:!IDEA:!ECDSA:kEDH:CAMELLIA128-SHA:AES128-SHA';
+ ssl_certificate     /usr/local/dehydrated/lib/certs/{{ nginx_api_gateway.domains[0] }}/fullchain.pem;
+ ssl_certificate_key  /usr/local/dehydrated/lib/certs/{{ nginx_api_gateway.domains[0] }}/privkey.pem;
+ root /var/www/html;
+
+ # Add index.php to the list if you are using PHP
+ index index.html index.htm index.nginx-debian.html;
+
+{% for domain in nginx_api_gateway.domains %}
+   server_name {{ domain }};
+{% endfor %}
+
+location ^~ /.well-known/acme-challenge {
+  alias /var/www/dehydrated;
+}
+
+location / {
+  # First attempt to serve request as file, then
+  # as directory, then fall back to displaying a 404.
+  try_files $uri $uri/ /index.html;
+}
+}

@@ -1,0 +1,7 @@
+mosquito:
+  port: 1883
+  websocket_port: 8883
+
+nginx_api_gateway:
+  domains:
+  - test.fieldtracks.org

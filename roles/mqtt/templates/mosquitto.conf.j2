@@ -1,0 +1,16 @@
+password_file /etc/mosquitto/mosquitto_passwd
+
+# TLS listener
+
+listener {{ mosquito.port }}
+cafile /etc/mosquitto/tls/ca.crt
+certfile /etc/mosquitto/tls/{{ inventory_hostname }}.fieldtracks.org.crt
+keyfile /etc/mosquitto/tls/{{ inventory_hostname }}.fieldtracks.org.key
+allow_anonymous false
+
+# Websocket listener
+listener {{ mosquito.websocket_port }}
+protocol websockets
+certfile /usr/local/dehydrated/lib/certs/{{ inventory_hostname }}.fieldtracks.org/fullchain.pem
+keyfile /usr/local/dehydrated/lib/certs/{{ inventory_hostname }}.fieldtracks.org/privkey.pem
+allow_anonymous false

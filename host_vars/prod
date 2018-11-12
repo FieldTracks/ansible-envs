@@ -1,0 +1,7 @@
+mosquito:
+  port: 1884
+  websocket_port: 8884
+
+nginx_api_gateway:
+  domains:
+  - prod.fieldtracks.org

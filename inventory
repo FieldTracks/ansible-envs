@@ -1,0 +1,8 @@
+#vm1.fieldtracks.org ansible_host=vm1.fieldtracks.org ansible_user=root
+#jenkins.fieldtracks.org ansible_host=jenkins.fieldtracks.org ansible_user=root  ansible_port="2201"
+
+
+[servers]
+dev ansible_host=dev.fieldtracks.org ansible_user=root ansible_port="2202"
+test ansible_host=test.fieldtracks.org ansible_user=root ansible_port="2203"
+prod ansible_host=prod.fieldtracks.org ansible_user=root ansible_port="2204"

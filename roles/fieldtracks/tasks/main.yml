@@ -1,0 +1,31 @@
+---
+- name: "Create Unix group fieldtracks"
+  group:
+    system: yes
+    name: fieldtracks
+    state: present
+
+- name: Create user fieldtracks
+  user:
+    create_home: yes
+    name: fieldtracks
+    comment: "Created by Ansible"
+    group: fieldtracks
+    groups: www-data
+    home: /home/fieldtracks
+    append: yes
+    shell: /bin/bash
+
+- name: Set permissions on /var/www/html
+  file:
+    state: directory
+    path: /var/www/html
+    owner: root
+    group: www-data
+    mode: 02775
+
+- name: Jenkins can ssh as fieldtracks
+  authorized_key:
+    user: fieldtracks
+    state: present
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDqIx+yerr1IqJlwZcXdX4EYybhGhe2QSaAdzNcq6eEy jenkins@jenkins"

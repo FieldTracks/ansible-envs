@@ -1,0 +1,88 @@
+- name: "Create Unix group dehydrated - users in this group have access to key-material"
+  group:
+    system: yes
+    name: dehydrated
+    state: present
+
+- name: Create user dehydrated
+  user:
+    create_home: yes
+    name: dehydrated
+    comment: "Created by Ansible"
+    group: dehydrated
+    home: /usr/local/dehydrated
+
+- name: clone / update dehydrated from github
+  become: true
+  become_user: dehydrated
+  become_method: sudo
+  git:
+    repo: https://github.com/lukas2511/dehydrated.git
+    dest: /usr/local/dehydrated/lib
+    clone: yes
+    update: yes
+    force: yes
+
+- name: Create /var/www/dehydrated for well-known data
+  file:
+    owner: dehydrated
+    group: www-data
+    path: /var/www/dehydrated
+    state: directory
+    mode: '0750'
+
+- name: Create /usr/local/dehydrated/bin for cronjob
+  file:
+    owner: dehydrated
+    group: root
+    path: /usr/local/dehydrated/bin
+    state: directory
+    mode: '0750'
+
+- name: "Register account at let's encrypt"
+  command: "sudo -u dehydrated /usr/local/dehydrated/lib/dehydrated  --register --accept-terms"
+  creates: /usr/local/dehydrated/lib/accounts/*/account_key.pem
+
+- name: Register specified domains in /usr/local/dehydrated/domains.txt
+  blockinfile:
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: Domains from nginx-api-gateway"
+    create: yes
+    path: /usr/local/dehydrated/lib/domains.txt
+    block: |
+      {{ nginx_api_gateway.domains | join(' ') }}
+
+- name: Create nginx http configuration
+  template: >
+    src=nginx.conf.j2
+    dest="/etc/nginx/sites-available/nginx-api-gateway-http.conf"
+    owner=root
+    group=root
+    mode='0600'
+
+- name: "Link http configuration / enable"
+  file:
+    src: '/etc/nginx/sites-available/nginx-api-gateway-http.conf'
+    dest: '/etc/nginx/sites-enabled/nginx-api-gateway-http.conf'
+    state: link
+
+- service:
+    name: nginx
+    state: reloaded
+
+- name: "Copy cron batchfile"
+  copy:
+    src: 'files/cron.sh'
+    dest: '/usr/local/dehydrated/bin/cron.sh'
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: "Cron entry each week"
+  cron:
+    name: "Renew certificates"
+    job: '/usr/local/dehydrated/bin/cron.sh'
+    user: root
+    special_time: 'weekly'
+
+- name: "Request certificate"
+  command: "/usr/local/dehydrated/bin/cron.sh"

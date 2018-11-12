@@ -1,0 +1,44 @@
+- name: install mosquito
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+  - mosquitto
+
+- name: Copy mqtt password file
+  copy: >
+    src=mosquitto_passwd
+    dest=/etc/mosquitto/mosquitto_passwd
+    mode='0700'
+    owner=root
+    group=root
+
+- name: Copy internal certificates
+  copy: >
+    src={{ item }}
+    dest=/etc/mosquitto/tls/
+    mode='0700'
+    owner=root
+    group=root
+  with_items:
+  - ca.crt
+  - "{{ ansible_host }}.key"
+  - "{{ ansible_host }}.crt"
+
+- name: Creating /etc/mosquitto/tls/
+  file:
+    owner: root
+    group: root
+    path: /etc/mosquitto/tls/
+    state: directory
+    mode: '0750'
+
+- name: Creating mosquitto configuration
+  template: >
+    src=mosquitto.conf.j2
+    dest="/etc/mosquitto/conf.d/mosquitto.conf"
+    owner=root
+    group=root
+    mode='0600'
+
+- service:
+    name: mosquitto
+    state: restarted

@@ -1,0 +1,26 @@
+#
+# Ansible managed configuration - do not edit
+#
+server {
+	listen 80;
+	listen [::]:80;
+	root /var/www/html;
+
+	# Add index.php to the list if you are using PHP
+	index index.html index.htm index.nginx-debian.html;
+
+{% for domain in nginx_api_gateway.domains %}
+  server_name {{ domain }};
+{% endfor %}
+
+
+  location ^~ /.well-known/acme-challenge {
+    alias /var/www/dehydrated;
+  }
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ /index.html;
+	}
+}

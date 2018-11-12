@@ -1,0 +1,99 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 7 (0x7)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=DE, ST=NRW, L=Bonn, O=privat, OU=privat, CN=privat CA/name=EasyRSA/emailAddress=jan@jluehr.de
+        Validity
+            Not Before: Nov 12 09:56:21 2018 GMT
+            Not After : Nov  9 09:56:21 2028 GMT
+        Subject: C=DE, ST=NRW, L=Bonn, O=privat, OU=privat, CN=test.fieldtracks.org/name=EasyRSA/emailAddress=jan@jluehr.de
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:b3:0f:d5:6a:a9:53:c1:7c:87:cb:38:a2:08:83:
+                    7b:f6:c1:71:e8:ee:5f:aa:fb:81:05:6a:b1:77:c4:
+                    06:cd:c9:7f:12:1d:6e:55:b1:4c:26:14:54:1b:3b:
+                    cb:f9:dd:8d:4e:be:9e:b7:2d:46:3b:48:90:f7:36:
+                    e2:81:b5:08:bf:33:e7:44:ce:00:29:56:48:00:33:
+                    bf:9a:1d:cb:6f:6e:85:6d:a8:17:f9:61:57:44:fa:
+                    4d:53:02:c3:e0:2d:0a:4b:dd:22:1c:e4:cc:79:4b:
+                    d2:5d:76:99:bc:77:7b:1e:2b:e4:44:ad:a2:f3:3d:
+                    1e:3c:37:f8:30:1e:41:e3:3b:65:e4:d9:9c:00:51:
+                    fe:7a:55:99:58:a7:30:b2:85:66:22:6e:b2:a4:db:
+                    e5:5b:dc:f5:00:a7:85:8a:0c:a0:a7:ec:05:b9:88:
+                    d0:15:e7:20:d6:8a:6a:42:53:80:92:2e:af:69:04:
+                    97:09:ca:de:83:1c:27:80:b7:88:b0:27:55:2f:61:
+                    c8:92:91:3f:d1:ec:1e:bd:8e:19:7e:2a:c0:be:09:
+                    82:e1:80:23:1a:d3:20:04:93:3f:2f:46:88:20:b8:
+                    33:06:2b:92:ed:71:87:11:64:50:c7:3f:0c:2d:78:
+                    b4:fe:1d:be:9e:64:ad:bd:02:09:35:ce:2d:a2:cd:
+                    73:7b
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Cert Type: 
+                SSL Server
+            Netscape Comment: 
+                Easy-RSA Generated Server Certificate
+            X509v3 Subject Key Identifier: 
+                9A:B1:3F:55:7B:B1:E3:DE:E3:BB:31:78:CE:4E:BD:AF:6A:D1:79:23
+            X509v3 Authority Key Identifier: 
+                keyid:5C:99:14:4D:4D:9C:E1:6C:4A:B0:A7:D2:C9:D4:A8:11:CF:BE:57:B6
+                DirName:/C=DE/ST=NRW/L=Bonn/O=privat/OU=privat/CN=privat CA/name=EasyRSA/emailAddress=jan@jluehr.de
+                serial:EF:57:EB:F7:5B:B0:44:81
+
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Key Usage: 
+                Digital Signature, Key Encipherment
+            X509v3 Subject Alternative Name: 
+                DNS:test.fieldtracks.org
+    Signature Algorithm: sha256WithRSAEncryption
+         61:67:e8:83:86:e7:2b:b1:e2:fa:9c:89:3f:93:11:8a:bb:f0:
+         ff:53:cd:84:30:ad:5d:fb:08:8b:5b:e1:34:6d:9c:04:dc:4e:
+         44:ab:c8:02:1f:87:72:6c:3a:0c:4d:d1:37:ef:78:6e:fd:e8:
+         bd:f2:af:fd:57:83:ed:ed:91:d6:8a:22:ba:f9:02:5c:87:24:
+         59:09:03:e9:af:f0:66:af:c9:96:be:c4:71:fb:3f:e2:6c:e0:
+         bd:e8:74:6b:1a:97:4c:38:e2:2f:ad:3e:7c:79:fb:e2:77:ed:
+         9a:8e:57:ab:c6:d5:6a:2c:e2:0c:db:fa:ba:c1:a5:5d:67:68:
+         e9:ba:fc:0d:3d:71:f8:52:9d:45:e9:1a:41:fe:88:fd:ed:34:
+         30:41:76:24:67:fb:5d:b5:d9:ef:ce:9f:48:d9:cf:d5:71:3c:
+         e2:50:81:4d:aa:ae:cc:97:0a:fd:cc:a1:1c:98:ab:76:ad:85:
+         fd:53:b4:16:26:e6:fd:e4:70:9f:a7:4a:a3:05:30:47:c4:96:
+         24:33:65:a8:9c:18:d4:63:88:be:f5:00:37:7b:50:08:03:9b:
+         83:a7:a5:e2:f9:b4:e5:27:6b:cf:f2:80:e6:cb:be:08:b1:a3:
+         13:1d:79:78:28:84:9c:65:32:1c:44:18:5a:8d:18:a2:cf:09:
+         cc:05:db:54
+-----BEGIN CERTIFICATE-----
+MIIFLDCCBBSgAwIBAgIBBzANBgkqhkiG9w0BAQsFADCBkDELMAkGA1UEBhMCREUx
+DDAKBgNVBAgTA05SVzENMAsGA1UEBxMEQm9ubjEPMA0GA1UEChMGcHJpdmF0MQ8w
+DQYDVQQLEwZwcml2YXQxEjAQBgNVBAMTCXByaXZhdCBDQTEQMA4GA1UEKRMHRWFz
+eVJTQTEcMBoGCSqGSIb3DQEJARYNamFuQGpsdWVoci5kZTAeFw0xODExMTIwOTU2
+MjFaFw0yODExMDkwOTU2MjFaMIGbMQswCQYDVQQGEwJERTEMMAoGA1UECBMDTlJX
+MQ0wCwYDVQQHEwRCb25uMQ8wDQYDVQQKEwZwcml2YXQxDzANBgNVBAsTBnByaXZh
+dDEdMBsGA1UEAxMUdGVzdC5maWVsZHRyYWNrcy5vcmcxEDAOBgNVBCkTB0Vhc3lS
+U0ExHDAaBgkqhkiG9w0BCQEWDWphbkBqbHVlaHIuZGUwggEiMA0GCSqGSIb3DQEB
+AQUAA4IBDwAwggEKAoIBAQCzD9VqqVPBfIfLOKIIg3v2wXHo7l+q+4EFarF3xAbN
+yX8SHW5VsUwmFFQbO8v53Y1Ovp63LUY7SJD3NuKBtQi/M+dEzgApVkgAM7+aHctv
+boVtqBf5YVdE+k1TAsPgLQpL3SIc5Mx5S9Jddpm8d3seK+REraLzPR48N/gwHkHj
+O2Xk2ZwAUf56VZlYpzCyhWYibrKk2+Vb3PUAp4WKDKCn7AW5iNAV5yDWimpCU4CS
+Lq9pBJcJyt6DHCeAt4iwJ1UvYciSkT/R7B69jhl+KsC+CYLhgCMa0yAEkz8vRogg
+uDMGK5LtcYcRZFDHPwwteLT+Hb6eZK29Agk1zi2izXN7AgMBAAGjggGCMIIBfjAJ
+BgNVHRMEAjAAMBEGCWCGSAGG+EIBAQQEAwIGQDA0BglghkgBhvhCAQ0EJxYlRWFz
+eS1SU0EgR2VuZXJhdGVkIFNlcnZlciBDZXJ0aWZpY2F0ZTAdBgNVHQ4EFgQUmrE/
+VXux497juzF4zk69r2rReSMwgcUGA1UdIwSBvTCBuoAUXJkUTU2c4WxKsKfSydSo
+Ec++V7ahgZakgZMwgZAxCzAJBgNVBAYTAkRFMQwwCgYDVQQIEwNOUlcxDTALBgNV
+BAcTBEJvbm4xDzANBgNVBAoTBnByaXZhdDEPMA0GA1UECxMGcHJpdmF0MRIwEAYD
+VQQDEwlwcml2YXQgQ0ExEDAOBgNVBCkTB0Vhc3lSU0ExHDAaBgkqhkiG9w0BCQEW
+DWphbkBqbHVlaHIuZGWCCQDvV+v3W7BEgTATBgNVHSUEDDAKBggrBgEFBQcDATAL
+BgNVHQ8EBAMCBaAwHwYDVR0RBBgwFoIUdGVzdC5maWVsZHRyYWNrcy5vcmcwDQYJ
+KoZIhvcNAQELBQADggEBAGFn6IOG5yux4vqciT+TEYq78P9TzYQwrV37CItb4TRt
+nATcTkSryAIfh3JsOgxN0TfveG796L3yr/1Xg+3tkdaKIrr5AlyHJFkJA+mv8Gav
+yZa+xHH7P+Js4L3odGsal0w44i+tPnx5++J37ZqOV6vG1Wos4gzb+rrBpV1naOm6
+/A09cfhSnUXpGkH+iP3tNDBBdiRn+1212e/On0jZz9VxPOJQgU2qrsyXCv3MoRyY
+q3athf1TtBYm5v3kcJ+nSqMFMEfEliQzZaicGNRjiL71ADd7UAgDm4OnpeL5tOUn
+a8/ygObLvgixoxMdeXgohJxlMhxEGFqNGKLPCcwF21Q=
+-----END CERTIFICATE-----

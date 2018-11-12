@@ -1,0 +1,10 @@
+---
+- name: install nginx, openssl, git
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+  - nginx
+  - curl
+  - git
+  - openssl
+- include: dehydrated.yml
+- include: nginx-tls.yml

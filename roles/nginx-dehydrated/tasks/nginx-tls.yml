@@ -1,0 +1,16 @@
+- name: "Create nginx TLS configuration"
+  template: >
+    src=nginx-tls.conf.j2
+    dest="/etc/nginx/sites-available/nginx-api-gateway-https.conf"
+    owner=root
+    group=root
+    mode='0600'
+- name: "Link http configuration / enable"
+  file:
+    src: '/etc/nginx/sites-available/nginx-api-gateway-https.conf'
+    dest: '/etc/nginx/sites-enabled/nginx-api-gateway-https.conf'
+    state: link
+
+- service:
+    name: nginx
+    state: reloaded
