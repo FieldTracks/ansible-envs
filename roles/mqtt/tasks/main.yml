@@ -4,6 +4,8 @@
   - mosquitto
 
 - name: Copy mqtt password file
+  notify:
+  - restart_mosquitto
   copy: >
     src=mosquitto_passwd
     dest=/etc/mosquitto/mosquitto_passwd
@@ -12,6 +14,8 @@
     group=root
 
 - name: Copy internal certificates
+  notify:
+  - restart_mosquitto
   copy: >
     src={{ item }}
     dest=/etc/mosquitto/tls/
@@ -24,6 +28,8 @@
   - "{{ ansible_host }}.crt"
 
 - name: Creating /etc/mosquitto/tls/
+  notify:
+  - restart_mosquitto
   file:
     owner: root
     group: root
@@ -32,13 +38,11 @@
     mode: '0750'
 
 - name: Creating mosquitto configuration
+  notify:
+  - restart_mosquitto
   template: >
     src=mosquitto.conf.j2
     dest="/etc/mosquitto/conf.d/mosquitto.conf"
     owner=root
     group=root
     mode='0600'
-
-- service:
-    name: mosquitto
-    state: restarted

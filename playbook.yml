@@ -10,6 +10,7 @@
 
 - hosts: servers
   roles:
+  - common
   - nginx-dehydrated
-  #- mqtt
-  #- fieldtracks
+  - mqtt
+  - fieldtracks
