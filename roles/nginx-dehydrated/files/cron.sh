@@ -1,4 +1,4 @@
 #!/bin/sh
 sudo -u dehydrated /usr/local/dehydrated/lib/dehydrated -c
-service nginx reload
-service mosquitto reload
+service nginx restart
+service mosquitto restart
