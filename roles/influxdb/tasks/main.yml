@@ -1,0 +1,36 @@
+- name: Install influxdb
+  apt:
+    name:
+    - influxdb
+    - python-requests
+    - python-influxdb
+
+
+- name: Create database fieldtracks
+  influxdb_database:
+    database_name: "fieldtracks"
+
+- name: Create user admin
+  influxdb_user:
+    user_name: admin
+    admin: true
+    user_password: '{{ influxdb.password.admin  }}'
+
+- name: Create fieldtracks user
+  influxdb_user:
+    user_name: fieldtracks
+    user_password: '{{ influxdb.password.fieldtracks  }}'
+
+- name: Create fieldtracks database
+  influxdb_user:
+    user_name: fieldtracks
+    user_password: '{{ influxdb.password.fieldtracks  }}'
+
+- name: Create InfluxDB configuration
+  template:
+    src: influxdb.conf.j2
+    dest: /etc/influxdb/influxdb.conf
+  notify:
+    - Restart InfluxDB
+
+- import_tasks: grafana.yml

@@ -2,6 +2,7 @@
   apt: name={{ item }} state=present update_cache=yes
   with_items:
   - mosquitto
+  - mosquitto-auth-plugin
 
 - name: Copy mqtt password file
   notify:

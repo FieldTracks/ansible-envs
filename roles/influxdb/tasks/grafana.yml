@@ -1,0 +1,34 @@
+- name: Add grafana signing key
+  apt_key:
+    url: https://packages.grafana.com/gpg.key
+    state: present
+- name: Include grafana repository
+  apt_repository:
+    repo: 'deb https://packages.grafana.com/oss/deb stable main'
+    state: present
+- name: Install grafana
+  apt:
+    update_cache: true
+    name: grafana
+    state: latest
+
+- name: Set grafana configuration
+  template:
+    src: templates/grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+  notify:
+    - Restart grafana
+
+- name: Create influxdb datasource
+  grafana_datasource:
+    name: "datasource-influxdb"
+    grafana_url: "http://localhost:3000"
+    grafana_user: "admin"
+    grafana_password: "{{ grafana.password.admin }}"
+    org_id: "1"
+    ds_type: "influxdb"
+    url: "http://localhost:8086"
+    database: "fieldtracks"
+    time_interval: ">10s"
+  notify:
+    - Restart grafana

@@ -6,3 +6,6 @@
 dev ansible_host=dev.fieldtracks.org ansible_user=root ansible_port="2202"
 test ansible_host=test.fieldtracks.org ansible_user=root ansible_port="2203"
 prod ansible_host=prod.fieldtracks.org ansible_user=root ansible_port="2204"
+
+[hackathon]
+#hackathon ansible_host=hackathon.fieldtracks.org ansible_user=root

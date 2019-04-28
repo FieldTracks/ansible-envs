@@ -1,0 +1,27 @@
+---
+- name: install nginx, openssl, git
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+  - nginx
+  - curl
+  - git
+  - openssl
+- include: dehydrated.yml
+- include: nginx-tls.yml
+
+- name: Copy webdav password file /etc/nginx/webdav.passwd
+  copy: >
+    src=webdav.passwd
+    dest=/etc/nginx/webdav.passwd
+    mode='0640'
+    owner=root
+    group=www-data
+
+- name: Create webdav folders
+  file: path={{ item }} state=directory owner=www-data
+  with_items:
+  - /var/www/webdav
+  - /var/www/webdav_temp
+
+- include: dehydrated.yml
+- include: nginx-tls.yml

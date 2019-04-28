@@ -1,0 +1,37 @@
+- blockinfile:
+    dest: '/etc/apt/preferences.d/limit-unstable'
+    block: |
+      Package: *
+      Pin: release a=unstable
+      Pin-Priority: 150
+    create: yes
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "Register Debian unstable using APT"
+  apt_repository:
+    repo: deb http://deb.debian.org/debian/ unstable main
+    state: present
+    filename: 'unstable-wireguard'
+    update_cache: yes
+
+- name: "Install wireguard"
+  apt: name=wireguard state=present
+
+- name: "Create /etc/network/interfaces.d/wireguard-kibana from template"
+  template:
+    src: templates/wireguard.interface.j2
+    dest: /etc/network/interfaces.d/wg-kibana
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: "Create /etc/network/interfaces.d/wg-kibana from template"
+  copy:
+    src: files/wireguard-kibana.conf
+    dest: /etc/wireguard/wg-kibana.conf
+    owner: root
+    group: root
+    mode: '0600'
+    force: no

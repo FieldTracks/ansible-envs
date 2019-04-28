@@ -5,3 +5,6 @@ mosquito:
 nginx_api_gateway:
   domains:
   - dev.fieldtracks.org
+
+wireguard:
+  ipv4: 192.168.66.202
