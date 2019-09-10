@@ -1,0 +1,10 @@
+mosquito:
+  port: 1883
+  websocket_port: 8883
+
+nginx_api_gateway:
+  domains:
+  - local.fieldtracks.org
+
+wireguard:
+  ipv4: 192.168.66.206

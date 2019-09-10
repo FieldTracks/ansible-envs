@@ -39,9 +39,10 @@
     state: directory
     mode: '0750'
 
-- name: "Register account at let's encrypt"
-  command: "sudo -u dehydrated /usr/local/dehydrated/lib/dehydrated  --register --accept-terms"
-  creates: /usr/local/dehydrated/lib/accounts/*/account_key.pem
+- name: 'Register account at lets encrypt'
+  command: 'sudo -u dehydrated /usr/local/dehydrated/lib/dehydrated  --register --accept-terms'
+  args:
+    creates: /usr/local/dehydrated/lib/accounts/*/account_key.pem
 
 - name: Register specified domains in /usr/local/dehydrated/domains.txt
   blockinfile:

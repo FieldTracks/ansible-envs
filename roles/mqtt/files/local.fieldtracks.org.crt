@@ -1,0 +1,62 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            e1:0a:02:60:ec:5d:12:b7:ed:9e:36:7c:f8:6f:45:11
+        Signature Algorithm: ecdsa-with-SHA256
+        Issuer: CN=fieldtracks.org internal CA
+        Validity
+            Not Before: Sep 10 08:04:28 2019 GMT
+            Not After : Sep  7 08:04:28 2029 GMT
+        Subject: CN=local.fieldtracks.org
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (384 bit)
+                pub:
+                    04:c6:2d:4e:19:a9:f9:80:19:08:48:ba:fd:bf:b4:
+                    b7:51:b8:a4:13:11:f8:20:ad:08:84:5b:d2:20:68:
+                    06:7a:38:ea:ec:95:13:9a:66:ff:ff:43:78:f3:07:
+                    07:49:d8:5a:cf:06:e3:b7:0b:50:e7:2d:a1:ca:bf:
+                    d4:1c:60:b6:68:57:03:0b:c8:08:bc:b2:12:0c:d9:
+                    64:66:d3:99:30:0c:e8:99:25:44:49:69:e8:f0:4b:
+                    16:2d:70:ba:77:70:fb
+                ASN1 OID: secp384r1
+                NIST CURVE: P-384
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Subject Key Identifier: 
+                0C:76:6E:79:DF:7A:EF:29:25:57:68:9F:DD:51:E0:94:8A:74:33:54
+            X509v3 Authority Key Identifier: 
+                keyid:EE:FD:7C:EB:B9:D8:3A:9A:27:12:97:C4:59:49:48:CF:03:E8:C3:F0
+                DirName:/CN=fieldtracks.org internal CA
+                serial:59:D4:0A:83:6E:A0:88:FF:4B:D2:2A:97:A1:4E:B6:F0:67:44:5C:F8
+
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Key Usage: 
+                Digital Signature, Key Encipherment
+            X509v3 Subject Alternative Name: 
+                DNS:local.fieldtracks.org
+    Signature Algorithm: ecdsa-with-SHA256
+         30:65:02:30:0e:f4:8c:8e:b8:a6:37:72:ec:94:df:0d:3d:48:
+         ff:85:a3:87:87:a1:c5:f4:f3:97:e5:04:1f:2b:bb:ab:b2:b5:
+         5d:3a:47:f8:99:20:29:0b:11:62:29:d8:a4:d4:5c:c3:02:31:
+         00:c5:fd:e9:b5:cf:36:44:2e:62:b4:66:75:47:9d:cf:85:98:
+         ee:a4:fa:a8:b2:4a:68:aa:64:8e:07:8c:9b:43:54:ce:75:50:
+         eb:05:b2:dd:7d:8e:4f:1b:77:fb:e3:50:c2
+-----BEGIN CERTIFICATE-----
+MIICVzCCAd2gAwIBAgIRAOEKAmDsXRK37Z42fPhvRREwCgYIKoZIzj0EAwIwJjEk
+MCIGA1UEAwwbZmllbGR0cmFja3Mub3JnIGludGVybmFsIENBMB4XDTE5MDkxMDA4
+MDQyOFoXDTI5MDkwNzA4MDQyOFowIDEeMBwGA1UEAwwVbG9jYWwuZmllbGR0cmFj
+a3Mub3JnMHYwEAYHKoZIzj0CAQYFK4EEACIDYgAExi1OGan5gBkISLr9v7S3Ubik
+ExH4IK0IhFvSIGgGejjq7JUTmmb//0N48wcHSdhazwbjtwtQ5y2hyr/UHGC2aFcD
+C8gIvLISDNlkZtOZMAzomSVESWno8EsWLXC6d3D7o4HUMIHRMAkGA1UdEwQCMAAw
+HQYDVR0OBBYEFAx2bnnfeu8pJVdon91R4JSKdDNUMGEGA1UdIwRaMFiAFO79fOu5
+2DqaJxKXxFlJSM8D6MPwoSqkKDAmMSQwIgYDVQQDDBtmaWVsZHRyYWNrcy5vcmcg
+aW50ZXJuYWwgQ0GCFFnUCoNuoIj/S9Iql6FOtvBnRFz4MBMGA1UdJQQMMAoGCCsG
+AQUFBwMBMAsGA1UdDwQEAwIFoDAgBgNVHREEGTAXghVsb2NhbC5maWVsZHRyYWNr
+cy5vcmcwCgYIKoZIzj0EAwIDaAAwZQIwDvSMjrimN3LslN8NPUj/haOHh6HF9POX
+5QQfK7ursrVdOkf4mSApCxFiKdik1FzDAjEAxf3ptc82RC5itGZ1R53PhZjupPqo
+skpoqmSOB4ybQ1TOdVDrBbLdfY5PG3f741DC
+-----END CERTIFICATE-----

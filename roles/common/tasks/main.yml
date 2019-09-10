@@ -1,20 +1,22 @@
 ---
 - name: install common packages
-  apt: name={{ item }} state=present update_cache=yes
-  with_items:
-  - aptitude
-  - syslog-ng
-  - dbus
-  - sudo
-  - etckeeper
-  - git
-  - htop
-  - vim
-  - tmux
-  - mosh
-  - needrestart
-  - rsync
-  - apt-transport-https
+  apt:
+    state: present
+    update_cache: yes
+    name:
+    - aptitude
+    - rsyslog
+    - dbus
+    - sudo
+    - etckeeper
+    - git
+    - htop
+    - vim
+    - tmux
+    - mosh
+    - needrestart
+    - rsync
+    - apt-transport-https
 
 - hostname: name={{ inventory_hostname }}
 
