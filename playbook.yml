@@ -4,6 +4,7 @@
   - common
   - mqtt
   - fieldtracks
+  - telegraf
   #- wireguard
   - role: jnv.unattended-upgrades
     unattended_origins_patterns:
