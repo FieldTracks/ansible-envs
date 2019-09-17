@@ -1,6 +1,9 @@
 password_file /etc/mosquitto/mosquitto_passwd
 allow_anonymous false
 
+# Telegraf
+listener 1888
+
 # TLS listener
 listener {{ mosquito.port }}
 cafile /etc/mosquitto/tls/ca.crt
@@ -14,6 +17,3 @@ protocol websockets
 certfile /usr/local/dehydrated/lib/certs/{{ inventory_hostname }}.fieldtracks.org/fullchain.pem
 keyfile /usr/local/dehydrated/lib/certs/{{ inventory_hostname }}.fieldtracks.org/privkey.pem
 require_certificate false
-
-# Telegraf
-listener 1888

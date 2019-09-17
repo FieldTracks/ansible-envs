@@ -1,0 +1,8 @@
+---
+- name: Create telegraf.conf
+  template: >
+    src=telegraf.conf.j2
+    dest="/etc/telegraf/telegraf.conf"
+    owner=telegraf
+    group=root
+    mode='0600'

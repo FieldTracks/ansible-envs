@@ -1,10 +1,12 @@
 - hosts: servers
   roles:
-  - nginx-env
-  - common
-  - mqtt
-  - fieldtracks
-  - telegraf
+  #- nginx-env
+  #- common
+  #- mqtt
+  #- fieldtracks
+  - influxdb
+  #- telegraf
+  #- telegraf-ft
   #- wireguard
   - role: jnv.unattended-upgrades
     unattended_origins_patterns:

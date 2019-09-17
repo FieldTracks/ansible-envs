@@ -21,14 +21,30 @@
 
 - name: Create influxdb datasource
   grafana_datasource:
-    name: "datasource-influxdb"
-    grafana_url: "http://localhost:3000"
+    name: "datasource-telegraf"
+    grafana_url: "https://{{ ansible_host }}/grafana"
     grafana_user: "admin"
     grafana_password: "{{ grafana.password.admin }}"
     org_id: "1"
     ds_type: "influxdb"
     url: "http://localhost:8086"
     database: "fieldtracks"
-    time_interval: ">10s"
-  notify:
-    - Restart grafana
+    time_interval: ">5s"
+    user: "grafana"
+    password: "{{ influxdb.password.grafana }}"
+    is_default: true
+
+
+#- name: Create influxdb datasource
+#  grafana_datasource:
+#    name: "datasource-influxdb"
+#    grafana_url: "http://localhost:3000"
+#    grafana_user: "admin"
+#    grafana_password: "{{ grafana.password.admin }}"
+#    org_id: "1"
+#    ds_type: "influxdb"
+#    url: "http://localhost:8086"
+#    database: "fieldtracks"
+#    time_interval: ">10s"
+#  notify:
+#    - Restart grafana

@@ -2,29 +2,9 @@
   apt:
     name:
     - influxdb
+    - influxdb-client
     - python-requests
     - python-influxdb
-
-
-- name: Create database fieldtracks
-  influxdb_database:
-    database_name: "fieldtracks"
-
-- name: Create user admin
-  influxdb_user:
-    user_name: admin
-    admin: true
-    user_password: '{{ influxdb.password.admin  }}'
-
-- name: Create fieldtracks user
-  influxdb_user:
-    user_name: fieldtracks
-    user_password: '{{ influxdb.password.fieldtracks  }}'
-
-- name: Create fieldtracks database
-  influxdb_user:
-    user_name: fieldtracks
-    user_password: '{{ influxdb.password.fieldtracks  }}'
 
 - name: Create InfluxDB configuration
   template:
@@ -32,5 +12,32 @@
     dest: /etc/influxdb/influxdb.conf
   notify:
     - Restart InfluxDB
+
+# The order here matters
+- name: Start influxdb
+  service:
+    name: influxdb
+    state: restarted
+
+#- name: Create database fieldtracks
+#  influxdb_database:
+#    database_name: "fieldtracks"
+
+#- name: Create user admin
+#  influxdb_user:
+#    user_name: admin
+#    admin: true
+#    user_password: '{{ influxdb.password.admin  }}'
+
+#- name: Create fieldtracks user
+#  influxdb_user:
+#    user_name: fieldtracks
+#    user_password: '{{ influxdb.password.fieldtracks  }}'
+#
+#- name: Create fieldtracks database
+#  influxdb_user:
+#    user_name: fieldtracks
+#    user_password: '{{ influxdb.password.fieldtracks  }}'
+
 
 - import_tasks: grafana.yml
