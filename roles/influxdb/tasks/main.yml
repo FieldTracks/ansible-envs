@@ -2,16 +2,10 @@
   apt:
     name:
     - influxdb
-    - influxdb-client
-    - python-requests
+    #- influxdb-client
+    #- python-requests
     - python-influxdb
 
-- name: Create InfluxDB configuration
-  template:
-    src: influxdb.conf.j2
-    dest: /etc/influxdb/influxdb.conf
-  notify:
-    - Restart InfluxDB
 
 # The order here matters
 - name: Start influxdb
@@ -19,15 +13,54 @@
     name: influxdb
     state: restarted
 
-#- name: Create database fieldtracks
-#  influxdb_database:
-#    database_name: "fieldtracks"
+- name: Create database fieldtracks
+  influxdb_database:
+    database_name: "fieldtracks"
+    username: admin
+    password: '{{ influxdb.password.admin  }}'
 
-#- name: Create user admin
-#  influxdb_user:
-#    user_name: admin
-#    admin: true
-#    user_password: '{{ influxdb.password.admin  }}'
+
+- name: Create user admin
+  influxdb_user:
+    user_name: admin
+    admin: true
+    user_password: '{{ influxdb.password.admin  }}'
+    username: admin
+    password: '{{ influxdb.password.admin  }}'
+  notify:
+    - Restart InfluxDB
+
+- name: Create user telegraf
+  influxdb_user:
+    user_name: telegraf
+    admin: true
+    user_password: '{{ influxdb.password.telegraf  }}'
+    username: admin
+    password: '{{ influxdb.password.admin  }}'
+  notify:
+    - Restart InfluxDB
+
+- name: Create user grafana
+  influxdb_user:
+    user_name: grafana
+    admin: false
+    user_password: '{{ influxdb.password.grafana  }}'
+    username: admin
+    password: '{{ influxdb.password.admin  }}'
+    grants:
+    - database: 'fieldtracks'
+      privilege: 'READ'
+  notify:
+    - Restart InfluxDB
+
+- name: Create InfluxDB configuration
+  template:
+    src: influxdb.conf.j2
+    dest: /etc/influxdb/influxdb.conf
+
+
+
+
 
 #- name: Create fieldtracks user
 #  influxdb_user:

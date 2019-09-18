@@ -12,6 +12,11 @@
     name: grafana
     state: latest
 
+- name: Start grafana
+  service:
+    name: grafana-server
+    state: restarted
+
 - name: Set grafana configuration
   template:
     src: templates/grafana.ini.j2
