@@ -157,7 +157,7 @@ log_queries =
 # No ip addresses are being tracked, only simple counters to track
 # running instances, dashboard and error counts. It is very helpful to us.
 # Change this option to false to disable reporting.
-;reporting_enabled = true
+reporting_enabled = false
 
 # Set to false to disable all checks to https://grafana.net
 # for new vesions (grafana itself and plugins), check is used
@@ -347,6 +347,15 @@ org_role = Viewer
 ;ldap_sync_ttl = 60
 ;whitelist = 192.168.1.1, 192.168.2.1
 ;headers = Email:X-User-Email, Name:X-User-Name
+
+;enabled = true
+;# HTTP Header name that will contain the username or email
+;header_name = X-WEBAUTH-USER
+;# HTTP Header property, defaults to `username` but can also be `email`
+;header_property = username
+;# Set to `true` to enable auto sign up of users who do not exist in Grafana DB. Defaults to `true`.
+;auto_sign_up = true
+
 
 #################################### Basic Auth ##########################
 [auth.basic]

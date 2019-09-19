@@ -26,7 +26,7 @@
 
 - name: Create influxdb datasource
   grafana_datasource:
-    name: "datasource-telegraf"
+    name: "datasource-influxdb"
     grafana_url: "https://{{ ansible_host }}/grafana"
     grafana_user: "admin"
     grafana_password: "{{ grafana.password.admin }}"
@@ -38,6 +38,39 @@
     user: "grafana"
     password: "{{ influxdb.password.grafana }}"
     is_default: true
+
+- name: Copy dashboards to remote host
+  copy:
+    src: "{{ item }}"
+    dest: "/tmp/{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  with_items:
+    - stones.json
+    - status.json
+
+- name: Import stones dashboard
+  grafana_dashboard:
+    grafana_url: "https://{{ ansible_host }}/grafana"
+    grafana_user: "admin"
+    grafana_password: "{{ grafana.password.admin }}"
+    state: present
+    message: Updated by ansible
+    overwrite: yes
+    path: /tmp/stones.json
+    uid: stones
+
+- name: Import mqtt-status dashboard
+  grafana_dashboard:
+    grafana_url: "https://{{ ansible_host }}/grafana"
+    grafana_user: "admin"
+    grafana_password: "{{ grafana.password.admin }}"
+    state: present
+    message: Updated by ansible
+    overwrite: yes
+    path: /tmp/status.json
+    uid: status
 
 
 #- name: Create influxdb datasource

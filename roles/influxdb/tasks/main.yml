@@ -8,10 +8,10 @@
 
 
 # The order here matters
-- name: Start influxdb
-  service:
-    name: influxdb
-    state: restarted
+#- name: Start influxdb
+#  service:
+#    name: influxdb
+#    state: restarted
 
 - name: Create database fieldtracks
   influxdb_database:
